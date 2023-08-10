@@ -6,7 +6,6 @@ import CampsiteInfoScreen from './CampsiteInfoScreen';
 
 const DirectoryNavigator = () => {
     const Stack = createStackNavigator();
-
     return (
         <Stack.Navigator
             initialRouteName='Directory'
@@ -31,14 +30,20 @@ const DirectoryNavigator = () => {
             />
         </Stack.Navigator>
     );
-}
+};
 
 const Main = () => {
     return (
-        <View style={{ flex: 1, paddingTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight }}>
+        <View 
+            style={{ 
+                flex: 1, 
+                paddingTop: 
+                    Platform.OS === 'ios' ? 0 : Constants.statusBarHeight 
+            }}
+        >
             <DirectoryNavigator />
         </View>
     );
-}
+};
 
 export default Main;
