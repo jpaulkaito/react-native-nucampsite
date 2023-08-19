@@ -1,12 +1,5 @@
 import { useState } from 'react';
-import { 
-    Text,
-    View, 
-    ScrollView, 
-    StyleSheet, 
-    Switch, 
-    Button 
-} from 'react-native';
+import { Text, View, ScrollView, StyleSheet, Switch, Button } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
@@ -20,21 +13,20 @@ const ReservationScreen = () => {
         const currentDate = selectedDate || date;
         setShowCalendar(Platform.OS === 'ios');
         setDate(currentDate);
-    }
+    };
 
     const handleReservation = () => {
-        console.log('campers:',campers);
-        console.log('hikeIn:',hikeIn);
-        console.log('date:',date);
-
+        console.log('campers:', campers);
+        console.log('hikeIn:', hikeIn);
+        console.log('date:', date);
         setCampers(1);
         setHikeIn(false);
         setDate(new Date());
         setShowCalendar(false);
-    }
+    };
 
     return (
-        <ScrollView >
+        <ScrollView>
             <View style={styles.formRow}>
                 <Text style={styles.formLabel}>Number of Campers:</Text>
                 <Picker
@@ -50,10 +42,8 @@ const ReservationScreen = () => {
                     <Picker.Item label='6' value={6} />
                 </Picker>
             </View>
-            <View>
-                <Text style={styles.formLabel}>
-                    Hike In?
-                </Text>
+            <View style={styles.formRow}>
+                <Text style={styles.formLabel}>Hike In?</Text>
                 <Switch
                     style={styles.formItem}
                     value={hikeIn}
@@ -62,9 +52,7 @@ const ReservationScreen = () => {
                 />
             </View>
             <View style={styles.formRow}>
-                <Text style={styles.formLabel}>
-                    Date:
-                </Text>
+                <Text style={styles.formLabel}>Date:</Text>
                 <Button
                     onPress={() => setShowCalendar(!showCalendar)}
                     title={date.toLocaleDateString('en-US')}
@@ -90,8 +78,8 @@ const ReservationScreen = () => {
                 />
             </View>
         </ScrollView>
-    )
-}
+    );
+};
 
 const styles = StyleSheet.create({
     formRow: {
