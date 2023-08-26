@@ -5,7 +5,7 @@
   "scripts": {
     "start2": "npm-run-all db start",
     "start": "expo start",
-    "db": "json-server -H 0.0.0.0 --watch db.json -p 3001 -d 1000",
+    "db": "json-server -H 0.0.0.0 --watch db.json -p 3001 -d 5000",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web"
