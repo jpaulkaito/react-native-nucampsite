@@ -6,7 +6,7 @@ import {
     StyleSheet,
     Switch,
     Button,
-    Modal,
+    // Modal,
     Alert
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
@@ -28,10 +28,24 @@ const ReservationScreen = () => {
     };
 
     const handleReservation = () => {
-        console.log('campers:', campers);
-        console.log('hikeIn:', hikeIn);
-        console.log('date:', date);
-        setShowModal(!showModal);
+        Alert.alert(
+            'Begin Search?',
+            'Number of Campers: ' + campers +
+            '\n\nHike-In? ' + (hikeIn ? 'true' : 'false') +
+            '\n\nDate: ' + date.toLocaleDateString('en-US'),
+            [
+                {
+                    text: 'Cancel',
+                    onPress: () => { resetForm() },
+                    style: 'cancel'
+                },
+                {
+                    text: 'OK',
+                    onPress: () => { resetForm() }
+                }
+            ],
+            { cancelable: false }
+        )
     };
 
     const resetForm = () => {
@@ -95,27 +109,7 @@ const ReservationScreen = () => {
                         title='Search Availability'
                         color='#5637DD'
                         accessibilityLabel='Tap me to search for available campsites to reserve'
-                        // onPress={() => handleReservation()}
-                        onPress={() =>
-                            Alert.alert(
-                                'Begin Search?',
-                                'Number of Campers: ' + campers +
-                                '\n\nHike-In? ' + (hikeIn ? 'true' : 'false') +
-                                '\n\nDate: ' + date.toLocaleDateString('en-US'),
-                                [
-                                    {
-                                        text: 'Cancel',
-                                        onPress: () => { resetForm() },
-                                        style: 'cancel'
-                                    },
-                                    {
-                                        text: 'OK',
-                                        onPress: () => { resetForm() }
-                                    }
-                                ],
-                                { cancelable: false }
-                            )
-                        }
+                        onPress={() => handleReservation()}
                     />
                 </View>
                 {/* <Modal
